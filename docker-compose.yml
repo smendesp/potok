@@ -28,8 +28,8 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: https://192.168.68.114
-        VITE_WS_URL: wss://192.168.68.114
+        VITE_API_URL: http://192.168.68.114:8000
+        VITE_WS_URL: ws://192.168.68.114:8000
         VITE_MAX_MESSAGE_LENGTH: "255"
     # Porta apenas na rede interna; acesso externo via proxy
     ports:

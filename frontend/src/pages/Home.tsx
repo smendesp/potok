@@ -31,9 +31,6 @@ export function Home() {
             {/* Barra superior — logo + tema */}
             <header className="sticky top-0 z-20 flex items-center justify-between border-b border-border bg-card/95 px-4 py-3 backdrop-blur-sm sm:px-6">
                 <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary">
-                        <FontAwesomeIcon icon={faLock} className="h-4 w-4" />
-                    </div>
                     <PotoKLogo height={28} className="shrink-0" />
                 </div>
                 <ThemeToggle />

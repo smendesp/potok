@@ -225,4 +225,6 @@ dist-ssr
 certs/
 **/*dist/
 
+docker-compose.yml
+
 # End of https://www.toptal.com/developers/gitignore/api/python,react

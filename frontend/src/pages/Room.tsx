@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { getWebSocketUrl, MAX_MESSAGE_LENGTH } from '@/config/env';
 import { generateId } from '@/lib/utils';
+import { PotoKLogo } from '@/components/PotoKLogo';
 
 type Message = {
     id: string;
@@ -88,20 +89,19 @@ export function Room() {
 
     return (
         <div className="flex h-screen flex-col bg-background text-foreground">
-            {/* Barra superior — estilo referência: voltar | título centralizado | ações */}
-            <header className="relative flex shrink-0 items-center justify-between border-b border-border bg-card px-4 py-3">
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={leaveRoom}
-                    className="h-9 w-9 shrink-0 rounded-full text-muted-foreground hover:text-foreground"
-                >
-                    <FontAwesomeIcon icon={faArrowLeft} className="h-4 w-4" />
-                </Button>
-
-                <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-base font-bold tracking-tight text-foreground">
-                    PotoK
-                </h1>
+            {/* Barra superior — voltar | logo | ações */}
+            <header className="flex shrink-0 items-center justify-between border-b border-border bg-card px-4 py-3">
+                <div className="flex items-center gap-3">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={leaveRoom}
+                        className="h-9 w-9 shrink-0 rounded-full text-muted-foreground hover:text-foreground"
+                    >
+                        <FontAwesomeIcon icon={faArrowLeft} className="h-4 w-4" />
+                    </Button>
+                    <PotoKLogo height={28} className="shrink-0" />
+                </div>
 
                 <div className="flex items-center gap-1">
                     <ThemeToggle />
