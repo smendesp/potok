@@ -1,0 +1,4 @@
+{
+  "DEFAULT_INFLUX_SERVER": "http://influxdb:8181",
+  "DEFAULT_SERVER_NAME": "Potok InfluxDB 3 Core"
+}

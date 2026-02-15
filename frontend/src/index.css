@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+        /* Dark Theme — Paleta inspirada em referências (.inspirações) */
+        /* #06141B #11212D #253745 #4A5C6A #9BA8AB #CCD0CF */
+        --background: 198 66% 6%;
+        --foreground: 192 8% 96%;
+        --card: 205 45% 12%;
+        --card-foreground: 192 8% 96%;
+        --popover: 205 45% 12%;
+        --popover-foreground: 192 8% 96%;
+        --primary: 166 76% 42%;
+        /* Teal/verde — destaque positivo, CTAs */
+        --primary-foreground: 198 66% 6%;
+        --secondary: 208 28% 22%;
+        --secondary-foreground: 192 8% 96%;
+        --muted: 208 28% 22%;
+        --muted-foreground: 192 8% 65%;
+        --accent: 208 28% 22%;
+        --accent-foreground: 192 8% 96%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 206 18% 28%;
+        --input: 206 18% 28%;
+        --ring: 166 76% 42%;
+        --radius: 0.875rem;
+        --radius-card: 1.25rem;
+        --shadow-card: 0 25px 50px -12px rgb(0 0 0 / 0.35);
+        --shadow-soft: 0 4px 24px -4px rgb(0 0 0 / 0.12);
+        /* Chat (referência React JS Chat) */
+        --chat-panel: 205 45% 14%;
+        --chat-bubble-out: 211 100% 42%;
+        --chat-bubble-out-foreground: 0 0% 100%;
+        --chat-bubble-in: 208 28% 22%;
+        --chat-bubble-in-foreground: 192 8% 96%;
+    }
+
+    .light {
+        /* Light — paleta clara com contraste e profundidade */
+        --background: 200 12% 96%;
+        --foreground: 198 66% 8%;
+        --card: 0 0% 100%;
+        --card-foreground: 198 66% 8%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 198 66% 8%;
+        --primary: 166 76% 32%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 200 10% 92%;
+        --secondary-foreground: 198 66% 8%;
+        --muted: 200 10% 92%;
+        --muted-foreground: 206 18% 40%;
+        --accent: 200 10% 90%;
+        --accent-foreground: 198 66% 8%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 206 12% 82%;
+        --input: 206 12% 82%;
+        --ring: 166 76% 32%;
+        /* Chat — painel claro, bolhas estilo referência */
+        --chat-panel: 0 0% 98%;
+        --chat-bubble-out: 211 100% 42%;
+        --chat-bubble-out-foreground: 0 0% 100%;
+        --chat-bubble-in: 210 14% 92%;
+        --chat-bubble-in-foreground: 198 66% 8%;
+    }
+
+    .sepia {
+        --background: 36 33% 90%;
+        /* Warm beige */
+        --foreground: 25 15% 25%;
+        /* Warm dark brown */
+        --card: 36 30% 85%;
+        --card-foreground: 25 15% 25%;
+        --popover: 36 33% 90%;
+        --popover-foreground: 25 15% 25%;
+        --primary: 25 25% 40%;
+        /* Earthy brown/orange */
+        --primary-foreground: 36 50% 95%;
+        --secondary: 36 20% 80%;
+        --secondary-foreground: 25 15% 25%;
+        --muted: 36 20% 80%;
+        --muted-foreground: 25 10% 50%;
+        --accent: 36 20% 75%;
+        --accent-foreground: 25 15% 25%;
+        --destructive: 0 50% 50%;
+        --destructive-foreground: 36 50% 95%;
+        --border: 36 20% 75%;
+        --input: 36 20% 75%;
+        --ring: 25 25% 40%;
+        --chat-panel: 36 30% 88%;
+        --chat-bubble-out: 25 25% 35%;
+        --chat-bubble-out-foreground: 36 50% 95%;
+        --chat-bubble-in: 36 20% 82%;
+        --chat-bubble-in-foreground: 25 15% 25%;
+    }
+
+    .high-contrast {
+        --background: 0 0% 0%;
+        --foreground: 0 0% 100%;
+        --card: 0 0% 5%;
+        --card-foreground: 0 0% 100%;
+        --popover: 0 0% 0%;
+        --popover-foreground: 0 0% 100%;
+        --primary: 60 100% 50%;
+        /* Yellow for max contrast */
+        --primary-foreground: 0 0% 0%;
+        --secondary: 0 0% 20%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 0 0% 20%;
+        --muted-foreground: 0 0% 80%;
+        --accent: 0 0% 30%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 100% 50%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 0 0% 100%;
+        --input: 0 0% 100%;
+        --ring: 60 100% 50%;
+        --chat-panel: 0 0% 8%;
+        --chat-bubble-out: 60 100% 50%;
+        --chat-bubble-out-foreground: 0 0% 0%;
+        --chat-bubble-in: 0 0% 25%;
+        --chat-bubble-in-foreground: 0 0% 100%;
+    }
+
+    .blue {
+        --background: 222 47% 11%;
+        --foreground: 210 40% 98%;
+        --card: 222 47% 10%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222 47% 11%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 217 91% 60%;
+        --primary-foreground: 222 47% 11%;
+        --secondary: 217 32% 17%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217 32% 17%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 217 32% 17%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217 32% 17%;
+        --input: 217 32% 17%;
+        --ring: 212.7 26.8% 83.9%;
+        --chat-panel: 222 47% 14%;
+        --chat-bubble-out: 217 91% 55%;
+        --chat-bubble-out-foreground: 222 47% 11%;
+        --chat-bubble-in: 217 32% 22%;
+        --chat-bubble-in-foreground: 210 40% 98%;
+    }
+}
+
+html {
+    font-family: var(--font-sans);
+}
+
+body {
+    @apply min-h-screen bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    font-family: var(--font-sans);
+}
+
+/* Scrollbar styles to match theme */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full hover:bg-muted-foreground/50 transition-colors;
+}
+
+/* Subtle focus ring for acessibilidade */
+:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
