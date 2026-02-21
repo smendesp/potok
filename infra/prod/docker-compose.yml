@@ -1,6 +1,6 @@
 services:
   proxy:
-    build: ./proxy/infra/prod
+    build: ../../proxy/infra/prod
     ports:
       - "80:80"
       - "443:443"
