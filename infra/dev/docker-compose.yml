@@ -1,0 +1,74 @@
+services:
+  proxy:
+    build: ./proxy/infra/dev
+    ports:
+      - "80:80"
+      - "443:443"
+    # Em produção: descomente e aponte para seus certificados (ver proxy/README.md)
+    # volumes:
+    #   - ./certs/gateway:/etc/nginx/ssl:ro
+    depends_on:
+      - frontend
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - INFLUX_URL=http://influxdb:8181
+      - INFLUX_DATABASE=potok
+      - INFLUX_TABLE=ws_events
+      - INFLUX_TOKEN=apiv3_HbJ80ytx4JvzHSaDNMTPOHFjO6ogOvANJoVCs9-l4DIG5ficEe2uZkau2yRE1G_kaKcBdkzXHR6vMGyRly5D2Q
+      - MAX_MESSAGE_LENGTH=255
+    depends_on:
+      - influxdb
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://192.168.68.114:8000
+        VITE_WS_URL: ws://192.168.68.114:8000
+        VITE_MAX_MESSAGE_LENGTH: "255"
+    # Porta apenas na rede interna; acesso externo via proxy
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  influxdb:
+    image: influxdb:3-core
+    container_name: influxdb3-core
+    user: "0:0"
+    ports:
+      - "8181:8181"
+    command:
+      - influxdb3
+      - serve
+      - --node-id=node0
+      - --object-store=file
+      - --data-dir=/var/lib/influxdb3/data
+      - --plugin-dir=/var/lib/influxdb3/plugins
+    volumes:
+      - influxdb_data:/var/lib/influxdb3/data
+      - influxdb_plugins:/var/lib/influxdb3/plugins
+
+  influxdb-explorer:
+    image: influxdata/influxdb3-ui:1.6.2
+    container_name: influxdb3-explorer
+    command: ["--mode=admin"]
+    ports:
+      - "8888:80"
+    volumes:
+      - explorer_data:/db
+      - ./config/explorer:/app-root/config:ro
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+
+
+volumes:
+  influxdb_data:
+  influxdb_plugins:
+  explorer_data:
