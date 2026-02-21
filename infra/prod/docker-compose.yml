@@ -18,7 +18,7 @@ services:
       - INFLUX_URL=http://influxdb:8181
       - INFLUX_DATABASE=potok
       - INFLUX_TABLE=ws_events
-      - INFLUX_TOKEN=apiv3_hoJ9hfIVT6eT8BhG4QZq5Eu0JALAYd6H8mqg0HAEcxYyKX6vYlWYP-qUoAk7ocOjW5sLTr1767fBtZIPK8K6Kw
+      - INFLUX_TOKEN=${INFLUX_TOKEN}
       - MAX_MESSAGE_LENGTH=255
     depends_on:
       - influxdb
