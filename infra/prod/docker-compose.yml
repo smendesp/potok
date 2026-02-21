@@ -11,7 +11,7 @@ services:
     restart: unless-stopped
 
   backend:
-    build: ./backend
+    build: ../../backend
     ports:
       - "8000:8000"
     environment:
@@ -25,7 +25,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ../../frontend
       args:
         VITE_API_URL: https://www.potok.com.br
         VITE_WS_URL: wss://ws.potok.com.br
@@ -61,7 +61,7 @@ services:
       - "8888:80"
     volumes:
       - explorer_data:/db
-      - ./config/explorer:/app-root/config:ro
+      - ../../config/explorer:/app-root/config:ro
     depends_on:
       - influxdb
     restart: unless-stopped
