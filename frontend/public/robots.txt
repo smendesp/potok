@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Sitemap (substitua pelo seu domínio em produção)
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://potok.com.br/sitemap.xml

@@ -5,7 +5,7 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!-- Página inicial -->
   <url>
-    <loc>https://example.com/</loc>
+    <loc>https://potok.com.br</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
