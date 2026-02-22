@@ -33,6 +33,7 @@ COPY --from=builder /app/.venv /app/.venv
 # Set environment variables
 ENV PATH="/app/.venv/bin:$PATH"
 ENV PYTHONUNBUFFERED=1
+ENV WORKERS=${WORKERS}
 
 # Run the application
-CMD ["/app/.venv/bin/python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "workers", "4"]
+CMD /app/.venv/bin/python -m uvicorn main:app --host 0.0.0.0 --port 8000 --workers $WORKERS

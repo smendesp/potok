@@ -11,7 +11,9 @@ services:
     restart: unless-stopped
 
   backend:
-    build: ../../backend
+    build: 
+      context: ../../backend
+      dockerfile: infra/prod/Dockerfile    
     ports:
       - "8000:8000"
     environment:
@@ -20,6 +22,7 @@ services:
       - INFLUX_TABLE=ws_events
       - INFLUX_TOKEN=${INFLUX_TOKEN}
       - MAX_MESSAGE_LENGTH=255
+      - WORKERS=4
     depends_on:
       - influxdb
 
